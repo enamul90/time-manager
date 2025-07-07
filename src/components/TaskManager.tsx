@@ -50,7 +50,8 @@ export default function TaskManager() {
 
     }
     catch (err) {
-      alert(err.response?.data?.error || 'Create Task Fails');
+      alert(  'Create Task Fails');
+      console.log(err)
     }
   }
 
@@ -63,12 +64,10 @@ export default function TaskManager() {
 
     }
     catch (err) {
-      alert(err.response?.data?.error || 'something went wrong');
+      alert( 'something went wrong');
+      console.log(err)
     }
   }
-
-
-
 
 
   const [dayList, setDayList] = useState([])
@@ -103,7 +102,8 @@ export default function TaskManager() {
           dayRequest()
         }
         catch (err) {
-          alert(err.response?.data?.error || 'Work  Create Fails');
+          alert('Work  Create Fails');
+          console.log(err)
         }
       }
       setDayName('');
@@ -115,7 +115,6 @@ export default function TaskManager() {
     setDayName(index.workday);
     setEditingIndex(index._id);
   };
-
 
   // const handleDelete = (index) => {
   //   const confirmDelete = window.confirm("Are you sure you want to delete this day?");

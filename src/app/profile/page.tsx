@@ -28,20 +28,20 @@ export default function Page() {
     });
     const [photoPreview, setPhotoPreview] = useState(user.photo);
 
-    const handlePhotoChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setFormData({ ...formData, photo: file });
-            setPhotoPreview(URL.createObjectURL(file));
-        }
-    };
+    // const handlePhot oChange = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         setFormData({ ...formData, photo: file });
+    //         setPhotoPreview(URL.createObjectURL(file));
+    //     }
+    // };
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (formData.username && formData.email) {
             // Simulate updating user data
@@ -187,7 +187,7 @@ export default function Page() {
                             />
                         </div>
 
-                        <div>
+                        {/* <div>
                             <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
                                 Profile Photo
                             </label>
@@ -211,7 +211,7 @@ export default function Page() {
 
                                 </div>
                             )}
-                        </div>
+                        </div> */}
 
 
                         <div className="flex space-x-4">

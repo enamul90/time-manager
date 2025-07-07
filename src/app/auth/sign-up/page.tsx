@@ -28,7 +28,7 @@ export default function Page() {
     //     }
     // };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (username && email && password) {
 
@@ -49,7 +49,8 @@ export default function Page() {
 
             }
             catch (err) {
-                alert(err.response?.data?.error || 'Register failed');
+                alert('Register failed');
+                console.log(err)
             }
         }
 

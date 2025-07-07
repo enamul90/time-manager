@@ -1,8 +1,18 @@
 
 
 
-export default function SummaryCard({ data }) {
+type SummaryItem = {
+  icon: React.ReactNode;
+  title: string;
+  value: string | number;
+};
 
+type SummaryCardProps = {
+  data: SummaryItem[];
+};
+
+
+export default function SummaryCard({ data }: SummaryCardProps ) {
 
     return (
         <>

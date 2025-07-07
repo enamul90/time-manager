@@ -23,8 +23,9 @@ export default function Page() {
         })
         router.push('/');
       }
-      catch (err) {
-        alert(err.response?.data?.error || 'Login failed');
+      catch (e) {
+        alert('Login failed');
+        console.log(e)
       }
     }
 
