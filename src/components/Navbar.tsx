@@ -23,29 +23,32 @@ export default function Navbar() {
             window.location.href = '/auth/login';
         }
 
-        catch (e){
+        catch (e) {
             console.log(e)
             alert("something went wrong")
         }
     };
 
 
-    const userInfoCall = async () => {
-        try {
-            const res = await API.get("/auth/user/userInfo")
-            setUser(prev => ({
-                ...prev,
-                username: res.data.data.name
-            }));
-        }
-        catch (e) {
-            router.push('/auth/login');
-        }
-    }
+    const userInfoCall = useCallback(
+        async () => {
+            try {
+                const res = await API.get("/auth/user/userInfo")
+                setUser(prev => ({
+                    ...prev,
+                    username: res.data.data.name
+                }));
+            }
+            catch (e) {
+                console.log(e)
+                router.push('/auth/login');
+            }
+        },[router]
 
+    )
     useEffect(() => {
         userInfoCall()
-    }, [])
+    }, [userInfoCall])
 
 
 

@@ -88,7 +88,7 @@ export default function Page() {
                 console.log(e)
                 router.push('/auth/login');
             }
-        },[]
+        }, [router] // 
     );
 
     useEffect(() => {
