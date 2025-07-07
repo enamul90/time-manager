@@ -1,22 +1,24 @@
-import { getAuthUser } from '@/app/lib/auth';
-import { connectDB } from '@/app/lib/db';
-import Task from '@/app/models/Task';
-
 
 import { NextRequest, NextResponse } from 'next/server';
+import { connectDB } from '@/app/lib/db';
+import { getAuthUser } from '@/app/lib/auth';
+import Task from '@/app/models/Task';
 
-
-
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
-
+export async function GET(
+  req: NextRequest,
+   context: { params: Promise<{ id: string }> }
+) {
   await connectDB();
-  const user = await getAuthUser()
 
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const user = await getAuthUser();
 
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
 
-  const data = await Task.find({ workID : params.id}).sort({ _id: -1 });
+  const { id } = await context.params; 
 
-  const res = NextResponse.json({ message: 'day created ', data });
-  return res;
+  const data = await Task.find({ workID: id }).sort({ _id: -1 });
+
+  return NextResponse.json({ message: 'Day created', data });
 }

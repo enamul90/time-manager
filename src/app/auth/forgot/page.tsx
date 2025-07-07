@@ -10,8 +10,7 @@ export default function ForgotPasswordPage() {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleRequestSubmit = (e) => {
-    e.preventDefault();
+  const handleRequestSubmit = () => {
     if (email) {
       // Simulate sending OTP
       alert(`OTP sent to ${email}! (Demo OTP: 123456)`);
@@ -21,8 +20,7 @@ export default function ForgotPasswordPage() {
     }
   };
 
-  const handleVerifySubmit = (e) => {
-    e.preventDefault();
+  const handleVerifySubmit = () => {
     // Simulate OTP verification (hardcoded OTP for demo)
     if (otp === '123456') {
       setStage('update');
@@ -31,8 +29,7 @@ export default function ForgotPasswordPage() {
     }
   };
 
-  const handleUpdateSubmit = (e) => {
-    e.preventDefault();
+  const handleUpdateSubmit = () => {
     if (newPassword && newPassword === confirmPassword) {
       alert('Password updated successfully! (This is a demo)');
       // Reset form and redirect to login
