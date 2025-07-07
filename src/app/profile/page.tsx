@@ -74,23 +74,26 @@ export default function Page() {
     };
 
 
-    const userInfoCall = async () => {
-        try {
-            const res = await API.get("/auth/user/userInfo")
-            setUser(prev => ({
-                ...prev,
-                username: res.data.data.name,
-                email: res.data.data.email,
-            }));
-        }
-        catch (e) {
-            router.push('/auth/login');
-        }
-    }
+    const userInfoCall = useCallback(
+        async () => {
+            try {
+                const res = await API.get("/auth/user/userInfo")
+                setUser(prev => ({
+                    ...prev,
+                    username: res.data.data.name,
+                    email: res.data.data.email,
+                }));
+            }
+            catch (e) {
+                console.log(e)
+                router.push('/auth/login');
+            }
+        },[]
+    );
 
     useEffect(() => {
         userInfoCall()
-    }, [])
+    }, [userInfoCall])
 
     return (
         <div className="min-h-screen flex items-center justify-center">
@@ -114,7 +117,7 @@ export default function Page() {
                         }
 
                         <button
-                            onClick={()=>router.push("/")}
+                            onClick={() => router.push("/")}
                             className="w-fit btn-primary cursor-pointer"
                         >
                             <  FaHome className='text-lg' />

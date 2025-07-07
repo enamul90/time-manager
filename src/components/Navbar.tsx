@@ -24,6 +24,7 @@ export default function Navbar() {
         }
 
         catch (e){
+            console.log(e)
             alert("something went wrong")
         }
     };

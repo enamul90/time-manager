@@ -6,7 +6,6 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdAdd } from "react-icons/io";
 import { MdOutlineArrowDropUp } from "react-icons/md";
 
-import { MdModeEditOutline } from "react-icons/md";
 
 import API from '@/app/utils/axios';
 
@@ -80,7 +79,7 @@ export default function TaskManager() {
       setDayList(res.data.data)
     }
     catch (err) {
-      
+      console.log(err)
     }
   }
 
@@ -118,17 +117,17 @@ export default function TaskManager() {
   };
 
 
-  const handleDelete = (index) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this day?");
-    if (confirmDelete) {
-      const updatedDays = days.filter((_, i) => i !== index);
-      setDays(updatedDays);
-      if (editingIndex === index) {
-        setDayName('');
-        setEditingIndex(null);
-      }
-    }
-  };
+  // const handleDelete = (index) => {
+  //   const confirmDelete = window.confirm("Are you sure you want to delete this day?");
+  //   if (confirmDelete) {
+  //     const updatedDays = days.filter((_, i) => i !== index);
+  //     setDays(updatedDays);
+  //     if (editingIndex === index) {
+  //       setDayName('');
+  //       setEditingIndex(null);
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     dayRequest()

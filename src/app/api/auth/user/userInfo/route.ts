@@ -1,9 +1,9 @@
 import { getAuthUser } from '@/app/lib/auth';
 import { connectDB } from '@/app/lib/db';
 import User from '@/app/models/User';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 
   await connectDB();
   const user =  await getAuthUser()
